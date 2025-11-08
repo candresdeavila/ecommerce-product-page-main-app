@@ -1,48 +1,44 @@
+// shared/modules/header/header.js
 export function createHeader() {
-    document.querySelector('#app').innerHTML = `
- <header class="w-full bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
-      
+  const header = document.createElement('header');
+  header.className = `
+    mx-auto max-w-6xl border-b border-gray-200
+    flex items-center justify-between px-6 py-4
+  `;
+
+  header.innerHTML = `
+    <div class="flex items-center gap-10">
       <!-- Logo -->
-      <a href="#" class="flex items-center space-x-2">
-        <img src="./tooth.png" alt="Smile Bright Logo" class="h-10 w-10">
-        <span class="font-bold text-xl text-gray-900">SNEAKERS</span>
-      </a>
+      <img src="./public/logo.svg" alt="Sneakers logo" class="h-5">
 
-      <!-- Navigation (desktop) -->
-      <nav class="hidden md:flex space-x-8 text-gray-600 font-medium">
-        <a href="#about" class="hover:text-blue-500">About Us</a>
-        <a href="#services" class="hover:text-blue-500">Our Services</a>
-        <a href="#team" class="hover:text-blue-500">Team</a>
-        <a href="#blog" class="hover:text-blue-500">Blog</a>
+      <!-- Navigation -->
+      <nav>
+        <ul class="hidden md:flex gap-6 text-gray-500 text-sm">
+          <li><a href="#" class="hover:text-black transition">Collections</a></li>
+          <li><a href="#" class="hover:text-black transition">Men</a></li>
+          <li><a href="#" class="hover:text-black transition">Women</a></li>
+          <li><a href="#" class="hover:text-black transition">About</a></li>
+          <li><a href="#" class="hover:text-black transition">Contact</a></li>
+        </ul>
       </nav>
-
-      <!-- Contact button -->
-      <a href="#contact" class="hidden md:inline-block bg-blue-600 text-white px-5 py-2 rounded-xl hover:bg-blue-700 transition">
-        Contact Us
-      </a>
-
-      <!-- Mobile menu button -->
-      <button id="menu-btn" class="md:hidden flex items-center text-gray-700">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
     </div>
-  </div>
 
-  <!-- Mobile nav -->
-  <div id="menu" class="hidden md:hidden px-4 pb-4 space-y-2 text-gray-600 font-medium">
-    <a href="#about" class="block hover:text-blue-500">About Us</a>
-    <a href="#services" class="block hover:text-blue-500">Our Services</a>
-    <a href="#team" class="block hover:text-blue-500">Team</a>
-    <a href="#blog" class="block hover:text-blue-500">Blog</a>
-    <a href="#contact" class="block bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition">
-      Contact Us
-    </a>
-  </div>
-</header>
-`
+    <div class="flex items-center gap-6">
+      <!-- Cart icon -->
+      <button class="relative">
+        <img src="./public/icon-cart.svg" alt="Cart icon" class="w-5 h-5">
+        <!-- Example of cart counter -->
+        <!-- <span class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full px-1">3</span> -->
+      </button>
+
+      <!-- Avatar -->
+      <img
+        src="./public/image-avatar.png"
+        alt="User avatar"
+        class="w-10 h-10 rounded-full border-2 border-transparent hover:border-orange-500 cursor-pointer transition"
+      >
+    </div>
+  `;
+
+  return header;
 }
