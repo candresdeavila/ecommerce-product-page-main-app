@@ -22,7 +22,7 @@ async function loadAndRenderProducts({ categoryId = null } = {}) {
 
   const products = await getProducts({ categoryId });
 
-  console.log('Productos cargados:', products);
+
 
   if (!Array.isArray(products) || products.length === 0) {
     rootSection.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500">No products found</div>`;
@@ -39,7 +39,7 @@ async function loadAndRenderProducts({ categoryId = null } = {}) {
 function productCard(product) {
   let imageUrl = Array.isArray(product.images) ? product.images[0] : '';
 
-  // 🩹 FIX para imágenes rotas con comillas extra
+  // 🩹 FIX damaged images
   if (typeof imageUrl === 'string') {
     imageUrl = imageUrl.replace(/^"+|"+$/g, '');
   }
