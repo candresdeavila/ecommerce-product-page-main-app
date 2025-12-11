@@ -16,8 +16,10 @@ export async function getProducts({ categoryId = null, limit = 0 } = {}) {
   try {
     let url = `${BASE}/products`;
     const params = [];
-    if (categoryId) params.push(`categoryId=${encodeURIComponent(categoryId)}`);
+
+    if (categoryId !== null) params.push(`category=${encodeURIComponent(categoryId)}`);
     if (limit > 0) params.push(`limit=${limit}`);
+
     if (params.length) url += `?${params.join('&')}`;
 
     const res = await fetch(url);
@@ -28,4 +30,5 @@ export async function getProducts({ categoryId = null, limit = 0 } = {}) {
     return [];
   }
 }
+
 
