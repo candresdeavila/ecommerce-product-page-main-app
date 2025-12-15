@@ -11,6 +11,7 @@ export async function createProductListScreen() {
 
   window.addEventListener('filterProducts', async (e) => {
     const { categoryId } = e.detail;
+    console.log('Filter event received:', categoryId);
     await loadAndRenderProducts({ categoryId });
   });
 
@@ -20,7 +21,9 @@ export async function createProductListScreen() {
 async function loadAndRenderProducts({ categoryId = null } = {}) {
   rootSection.innerHTML = `<div class="col-span-full text-center py-12">Loading products...</div>`;
 
-  const products = await getProducts({ categoryId });
+  console.log('Loading products with categoryId:', categoryId);
+  const products = await getProducts({ categoryId, limit: 50 });
+  console.log('Products received:', products.length);
 
 
 
@@ -30,7 +33,8 @@ async function loadAndRenderProducts({ categoryId = null } = {}) {
   }
 
   rootSection.innerHTML = '';
-  products.forEach(product => {
+  const limitedProducts = products.slice(0, 50);
+  limitedProducts.forEach(product => {
     const card = productCard(product);
     rootSection.appendChild(card);
   });

@@ -17,16 +17,17 @@ export async function getProducts({ categoryId = null, limit = 0 } = {}) {
     let url = `${BASE}/products`;
     const params = [];
 
-    if (categoryId !== null) params.push(`category=${encodeURIComponent(categoryId)}`);
+    if (categoryId !== null) params.push(`categoryId=${encodeURIComponent(categoryId)}`);
     if (limit > 0) params.push(`limit=${limit}`);
 
     if (params.length) url += `?${params.join('&')}`;
 
+    console.log('Fetching from URL:', url);
     const res = await fetch(url);
     if (!res.ok) throw new Error('Failed to fetch products');
     return await res.json();
   } catch (err) {
-    console.error('getProducts:', err);
+    console.error('getProducts error:', err);
     return [];
   }
 }

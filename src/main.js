@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   root.prepend(header); 
 
   // Product List Screen render
-  await renderProductList(root);
+  const productList = await createProductListScreen();
+  root.appendChild(productList);
 
 });
